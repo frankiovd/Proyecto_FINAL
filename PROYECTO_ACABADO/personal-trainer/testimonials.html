@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios - FitLife Entrenamiento Personal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">FitLife</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium transition duration-300">Inicio</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium transition duration-300">Nosotros</a>
+                    <a href="plans.html" class="text-secondary hover:text-primary font-medium transition duration-300">Planes</a>
+                    <a href="testimonials.html" class="text-primary font-medium transition duration-300">Testimonios</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium transition duration-300">Contacto</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-secondary hover:text-primary font-medium">Inicio</a>
+                <a href="about.html" class="block py-2 text-secondary hover:text-primary font-medium">Nosotros</a>
+                <a href="plans.html" class="block py-2 text-secondary hover:text-primary font-medium">Planes</a>
+                <a href="testimonials.html" class="block py-2 text-primary font-medium">Testimonios</a>
+                <a href="contact.html" class="block py-2 text-secondary hover:text-primary font-medium">Contacto</a>
+                <div class="flex space-x-4 mt-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-20 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Testimonios</h1>
+            <p class="text-white text-lg max-w-3xl mx-auto">Descubre las historias de éxito de nuestros clientes y cómo FitLife ha transformado sus vidas.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Lo que dicen nuestros clientes</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">En FitLife, nos enorgullece el impacto positivo que tenemos en la vida de nuestros clientes. Estas son algunas de sus experiencias y resultados.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-light p-8 rounded-lg shadow-md testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Desde que empecé a entrenar con FitLife, he notado una mejora significativa en mi condición física y bienestar general. Mi entrenador personal ha sido clave en mi transformación, adaptando constantemente mi plan según mis progresos y necesidades."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-secondary">Laura Martínez</h4>
+                            <p class="text-gray-500 text-sm">Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"El plan personalizado que me diseñaron se adaptó perfectamente a mis necesidades. He conseguido perder peso y ganar masa muscular de forma equilibrada. Lo que más valoro es la atención personalizada y el seguimiento constante. ¡Totalmente recomendable!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-secondary">Carlos Rodríguez</h4>
+                            <p class="text-gray-500 text-sm">Cliente desde 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Lo que más valoro de FitLife es el seguimiento constante y la motivación que me brindan. Gracias a ellos he conseguido mantener la constancia en mi entrenamiento y ver resultados. El ambiente es muy acogedor y profesional."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-secondary">Ana García</h4>
+                            <p class="text-gray-500 text-sm">Cliente desde 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Historias de Éxito</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Conoce las transformaciones reales de nuestros clientes y cómo han logrado sus objetivos con nuestro apoyo.</p>
+            </div>
+            
+            <!-- Success Story 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 p-6 flex flex-col justify-center items-center bg-secondary text-white">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Historia de Éxito" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-center">Miguel Fernández</h3>
+                        <p class="text-center mb-4">Objetivo: Pérdida de peso</p>
+                        <div class="flex space-x-4 text-center">
+                            <div>
+                                <p class="text-2xl font-bold">-18kg</p>
+                                <p class="text-sm">Peso</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold">-12%</p>
+                                <p class="text-sm">Grasa corporal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">De sedentario a apasionado del fitness</h3>
+                        <p class="text-gray-600 mb-4">"Después de años de vida sedentaria y mala alimentación, mi salud estaba en riesgo. Mi médico me recomendó perder peso urgentemente. Decidí probar con FitLife y fue la mejor decisión que pude tomar."</p>
+                        <p class="text-gray-600 mb-4">"Mi entrenador, Carlos, diseñó un plan progresivo que se adaptaba perfectamente a mi condición inicial. Comenzamos con ejercicios básicos y una reeducación alimentaria. A medida que avanzaba, fuimos incrementando la intensidad."</p>
+                        <p class="text-gray-600 mb-4">"En 8 meses, perdí 18 kg y reduje mi porcentaje de grasa corporal en un 12%. Pero lo más importante es que ahora disfruto del ejercicio, tengo más energía y mi salud ha mejorado significativamente."</p>
+                        <div class="flex items-center mt-6">
+                            <span class="text-primary mr-2">Tiempo para lograr resultados:</span>
+                            <span class="font-bold">8 meses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Success Story 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 p-6 flex flex-col justify-center items-center bg-secondary text-white">
+                        <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Historia de Éxito" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-center">Elena Sánchez</h3>
+                        <p class="text-center mb-4">Objetivo: Tonificación y fuerza</p>
+                        <div class="flex space-x-4 text-center">
+                            <div>
+                                <p class="text-2xl font-bold">+40%</p>
+                                <p class="text-sm">Fuerza</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold">+5kg</p>
+                                <p class="text-sm">Masa muscular</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">Superando mis límites</h3>
+                        <p class="text-gray-600 mb-4">"Siempre fui una persona activa, pero sentía que había llegado a un estancamiento en mi entrenamiento. Quería mejorar mi fuerza y tonificar mi cuerpo, pero no sabía cómo avanzar."</p>
+                        <p class="text-gray-600 mb-4">"Con FitLife, mi entrenadora Laura diseñó un programa de entrenamiento de fuerza progresivo, combinado con un plan nutricional específico para apoyar el desarrollo muscular. Me enseñó la técnica correcta y me ayudó a superar mis miedos con los pesos."</p>
+                        <p class="text-gray-600 mb-4">"En un año, aumenté mi fuerza en un 40% y gané 5 kg de masa muscular. Ahora puedo hacer dominadas, algo que nunca pensé que lograría. Me siento más fuerte, más segura y orgullosa de mi cuerpo."</p>
+                        <div class="flex items-center mt-6">
+                            <span class="text-primary mr-2">Tiempo para lograr resultados:</span>
+                            <span class="font-bold">12 meses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Success Story 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 p-6 flex flex-col justify-center items-center bg-secondary text-white">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Historia de Éxito" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-center">Javier López</h3>
+                        <p class="text-center mb-4">Objetivo: Rehabilitación</p>
+                        <div class="flex space-x-4 text-center">
+                            <div>
+                                <p class="text-2xl font-bold">100%</p>
+                                <p class="text-sm">Recuperación</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold">0</p>
+                                <p class="text-sm">Dolor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">Volviendo a la actividad después de una lesión</h3>
+                        <p class="text-gray-600 mb-4">"Después de una lesión en la rodilla jugando al fútbol, los médicos me dijeron que necesitaría rehabilitación. Tras la fisioterapia inicial, busqué ayuda profesional para recuperar completamente mi funcionalidad y volver al deporte."</p>
+                        <p class="text-gray-600 mb-4">"En FitLife, Miguel, especialista en rehabilitación, diseñó un programa específico para mi lesión. Comenzamos con ejercicios de movilidad y estabilización, y fuimos progresando gradualmente hacia ejercicios más funcionales."</p>
+                        <p class="text-gray-600 mb-4">"Después de 6 meses, no solo recuperé la funcionalidad completa de mi rodilla, sino que también mejoré mi fuerza y estabilidad general. Ahora puedo jugar al fútbol sin dolor y con mayor confianza que antes."</p>
+                        <div class="flex items-center mt-6">
+                            <span class="text-primary mr-2">Tiempo para lograr resultados:</span>
+                            <span class="font-bold">6 meses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Testimonios en Video</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Escucha directamente de nuestros clientes cómo ha sido su experiencia con FitLife.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-light rounded-lg shadow-md overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 relative">
+                        <div class="w-full h-0 pb-[56.25%] bg-gray-200 relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-play-circle text-6xl text-primary mb-2"></i>
+                                    <p class="text-gray-600">Video Testimonio</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">María Gómez - Transformación Total</h3>
+                        <p class="text-gray-600">María comparte su experiencia de transformación con el Plan Elite, logrando perder 25kg en un año.</p>
+                    </div>
+                </div>
+                <div class="bg-light rounded-lg shadow-md overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 relative">
+                        <div class="w-full h-0 pb-[56.25%] bg-gray-200 relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-play-circle text-6xl text-primary mb-2"></i>
+                                    <p class="text-gray-600">Video Testimonio</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Pedro Ruiz - Preparación para Maratón</h3>
+                        <p class="text-gray-600">Pedro explica cómo el entrenamiento personalizado le ayudó a prepararse para su primer maratón.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Reviews -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Opiniones de Clientes</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Más de 500 clientes satisfechos han compartido sus experiencias con nosotros.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Excelente servicio y atención personalizada. Mi entrenador siempre está pendiente de mi progreso y me motiva constantemente."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary">Sofía Pérez</h4>
+                            <p class="text-gray-500 text-sm">Plan Premium</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Las instalaciones son modernas y siempre están limpias. El equipo de entrenadores es muy profesional y conocedor. Recomendado al 100%."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary">Alberto Díaz</h4>
+                            <p class="text-gray-500 text-sm">Plan Elite</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">4.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Muy buen servicio en general. El plan nutricional me ha ayudado mucho. Solo mejoraría la flexibilidad de horarios para las sesiones."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary">Carmen Vega</h4>
+                            <p class="text-gray-500 text-sm">Plan Básico</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">4.5</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Llevo 3 meses con el plan Premium y estoy muy satisfecho con los resultados. Los entrenadores son muy profesionales y atentos."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary">Raúl Moreno</h4>
+                            <p class="text-gray-500 text-sm">Plan Premium</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"La app de seguimiento del Plan Elite es fantástica. Puedo ver mi progreso, comunicarme con mi entrenador y seguir mi plan nutricional fácilmente."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary">Lucía Torres</h4>
+                            <p class="text-gray-500 text-sm">Plan Elite</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 6 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Después de probar varios gimnasios, finalmente encontré lo que buscaba en FitLife. La atención personalizada marca la diferencia."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary">Daniel Ortiz</h4>
+                            <p class="text-gray-500 text-sm">Plan Básico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-opacity-90 transition duration-300">Ver Más Opiniones</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Your Story -->
+    <section class="py-16 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white font-heading mb-6">Comparte Tu Historia</h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto">¿Eres cliente de FitLife y quieres compartir tu experiencia? Nos encantaría conocer tu historia y cómo te hemos ayudado a alcanzar tus objetivos.</p>
+            <a href="contact.html?subject=Mi Historia" class="inline-block px-6 py-3 bg-white text-secondary font-medium rounded-md hover:bg-gray-100 transition duration-300">Compartir Mi Historia</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">FitLife</h3>
+                    <p class="text-gray-400 mb-4">Transformando vidas a través del entrenamiento personalizado y un estilo de vida saludable.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition duration-300">Inicio</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition duration-300">Nosotros</a></li>
+                        <li><a href="plans.html" class="text-gray-400 hover:text-primary transition duration-300">Planes</a></li>
+                        <li><a href="testimonials.html" class="text-gray-400 hover:text-primary transition duration-300">Testimonios</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Servicios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Entrenamiento Personal</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Asesoramiento Nutricional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Entrenamiento en Grupo</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Programas Online</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Evaluación Física</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">Calle Principal 123, Madrid, España</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+34 912 345 678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">info@fitlife.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary mr-3"></i>
+                            <span class="text-gray-400">Lun-Vie: 7:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2023 FitLife - Entrenamiento Personal. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

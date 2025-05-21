@@ -1,0 +1,368 @@
+<?php
+require_once 'php/config.php';
+require_once 'php/auth_helper.php';
+require_once 'php/profile_helper.php';
+require_once 'php/dashboard_helper.php';
+
+// Verificar sesión
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+$userId = $_SESSION['usuario_id'];
+$userProfile = getUserProfile($userId);
+$userStats = getUserStatistics($userId);
+$activePlan = getClientActivePlan($userId);
+$trainer = getClientTrainer($userId);
+$notificationCount = getUserNotifications($userId);
+
+// Procesar actualización de perfil
+$message = '';
+$messageType = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        if (isset($_POST['update_profile'])) {
+            $data = [
+                'name' => sanitizarInput($_POST['name']),
+                'email' => sanitizarInput($_POST['email']),
+                'phone' => sanitizarInput($_POST['phone'])
+            ];
+            
+            if (updateUserProfile($userId, $data)) {
+                $_SESSION['nombre'] = $data['name'];
+                $message = 'Perfil actualizado correctamente';
+                $messageType = 'success';
+            }
+        } elseif (isset($_FILES['profile_picture'])) {
+            if (updateProfilePicture($userId, $_FILES['profile_picture'])) {
+                $message = 'Foto de perfil actualizada correctamente';
+                $messageType = 'success';
+            }
+        }
+    } catch (Exception $e) {
+        $message = $e->getMessage();
+        $messageType = 'error';
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - TrainSmart</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">TrainSmart</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="dashboard.php" class="text-secondary hover:text-primary font-medium transition duration-300">Panel</a>
+                    <a href="plans.php" class="text-secondary hover:text-primary font-medium transition duration-300">Planes</a>
+                    <a href="progress.php" class="text-secondary hover:text-primary font-medium transition duration-300">Progreso</a>
+                    <a href="nutrition.php" class="text-secondary hover:text-primary font-medium transition duration-300">Nutrición</a>
+                    <a href="settings.php" class="text-secondary hover:text-primary font-medium transition duration-300">Ajustes</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <?php if (isset($_SESSION['photo_url'])): ?>
+                                <img src="<?php echo htmlspecialchars($_SESSION['photo_url']); ?>" alt="Usuario" class="w-8 h-8 rounded-full">
+                            <?php else: ?>
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="w-8 h-8 rounded-full">
+                            <?php endif; ?>
+                            <span class="text-secondary font-medium"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span>
+                            <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
+                            <a href="profile.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi Perfil</a>
+                            <a href="settings.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ajustes</a>
+                            <div class="border-t border-gray-100"></div>
+                            <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                    <a href="messages.php" class="text-secondary hover:text-primary transition duration-300 relative">
+                        <i class="fas fa-bell text-xl"></i>
+                        <?php if ($notificationCount > 0): ?>
+                        <span class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                            <?php echo $notificationCount; ?>
+                        </span>
+                        <?php endif; ?>
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="dashboard.php" class="block py-2 text-secondary hover:text-primary font-medium">Panel</a>
+                <a href="plans.php" class="block py-2 text-secondary hover:text-primary font-medium">Planes</a>
+                <a href="progress.php" class="block py-2 text-secondary hover:text-primary font-medium">Progreso</a>
+                <a href="nutrition.php" class="block py-2 text-secondary hover:text-primary font-medium">Nutrición</a>
+                <a href="settings.php" class="block py-2 text-secondary hover:text-primary font-medium">Ajustes</a>
+                <div class="border-t border-gray-200 my-2"></div>
+                <a href="profile.php" class="block py-2 text-primary font-medium">Mi Perfil</a>
+                <a href="logout.php" class="block py-2 text-secondary hover:text-primary font-medium">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Page Title -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h1 class="text-2xl font-bold text-secondary font-heading mb-2">Mi Perfil</h1>
+            <p class="text-gray-600">Gestiona tu información personal y visualiza tus estadísticas.</p>
+        </div>
+
+        <?php if ($message): ?>
+            <div class="mb-4 p-4 rounded-lg <?php echo $messageType === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'; ?>">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Left Column - Profile Info -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-primary text-white p-4">
+                        <h2 class="text-xl font-bold font-heading">Información Personal</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-center mb-6">
+                            <div class="relative inline-block">
+                                <?php if (isset($_SESSION['photo_url'])): ?>
+                                    <img src="<?php echo htmlspecialchars($_SESSION['photo_url']); ?>" alt="Foto de perfil" class="w-32 h-32 rounded-full mx-auto mb-4">
+                                <?php else: ?>
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de perfil" class="w-32 h-32 rounded-full mx-auto mb-4">
+                                <?php endif; ?>
+                                <label for="profile_picture" class="absolute bottom-0 right-0 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-opacity-90">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                                <form id="profile-picture-form" method="POST" enctype="multipart/form-data" class="hidden">
+                                    <input type="file" id="profile_picture" name="profile_picture" accept="image/*" onchange="this.form.submit()">
+                                </form>
+                            </div>
+                            <h2 class="text-2xl font-bold text-secondary mb-1"><?php echo htmlspecialchars($userProfile['name']); ?></h2>
+                            <p class="text-gray-600"><?php echo htmlspecialchars($userProfile['role']); ?></p>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6">
+                            <form method="POST" class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($userProfile['name']); ?>" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userProfile['email']); ?>" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                                    <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($userProfile['phone'] ?? ''); ?>" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <button type="submit" name="update_profile" class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition duration-300">
+                                    Guardar Cambios
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column - Statistics -->
+            <div class="md:col-span-2">
+                <!-- Training Stats -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                    <div class="bg-primary text-white p-4">
+                        <h2 class="text-xl font-bold font-heading">Estadísticas de Entrenamiento</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-light rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-600">Sesiones Completadas</span>
+                                    <span class="text-2xl font-bold text-primary"><?php echo $userStats['completed_sessions']; ?></span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <?php $completionRate = ($userStats['completed_sessions'] / $userStats['total_sessions']) * 100; ?>
+                                    <div class="bg-primary rounded-full h-2" style="width: <?php echo $completionRate; ?>%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-light rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-600">Valoración Media</span>
+                                    <span class="text-2xl font-bold text-primary"><?php echo number_format($userStats['avg_rating'], 1); ?></span>
+                                </div>
+                                <div class="flex text-primary">
+                                    <?php for($i = 1; $i <= 5; $i++): ?>
+                                        <?php if($i <= round($userStats['avg_rating'])): ?>
+                                            <i class="fas fa-star"></i>
+                                        <?php else: ?>
+                                            <i class="far fa-star"></i>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                            <div class="bg-light rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-600">Logros</span>
+                                    <span class="text-2xl font-bold text-primary"><?php echo $userStats['total_achievements']; ?></span>
+                                </div>
+                                <div class="text-gray-600">
+                                    <i class="fas fa-trophy text-primary"></i> Logros desbloqueados
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Plan -->
+                <?php if ($activePlan): ?>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                    <div class="bg-primary text-white p-4">
+                        <h2 class="text-xl font-bold font-heading">Plan Actual</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h4 class="font-bold text-lg mb-2"><?php echo htmlspecialchars($activePlan['name']); ?></h4>
+                                <p class="text-gray-600 mb-4"><?php echo htmlspecialchars($activePlan['description']); ?></p>
+                                <div class="flex items-center space-x-4">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary bg-opacity-10 text-primary">
+                                        <?php echo htmlspecialchars($activePlan['difficulty_level']); ?>
+                                    </span>
+                                    <span class="text-gray-600">
+                                        <i class="far fa-calendar-alt mr-2"></i>
+                                        <?php echo $activePlan['duration_weeks']; ?> semanas
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="plans.php" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition duration-300">
+                                Ver Detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <!-- Trainer Info -->
+                <?php if ($trainer): ?>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-primary text-white p-4">
+                        <h2 class="text-xl font-bold font-heading">Mi Entrenador</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <img src="<?php echo htmlspecialchars($trainer['photo_url'] ?? 'https://randomuser.me/api/portraits/men/32.jpg'); ?>" alt="Entrenador" class="w-16 h-16 rounded-full">
+                                <div>
+                                    <h4 class="font-bold text-lg"><?php echo htmlspecialchars($trainer['name']); ?></h4>
+                                    <p class="text-gray-600"><?php echo htmlspecialchars($trainer['specialization'] ?? 'Entrenador Personal'); ?></p>
+                                </div>
+                            </div>
+                            <a href="messages.php" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition duration-300">
+                                Enviar Mensaje
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-primary font-heading">TrainSmart</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <p class="text-gray-400">&copy; 2023 TrainSmart - Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // User menu toggle
+        const userMenuButton = document.getElementById('user-menu-button');
+        const userMenu = document.getElementById('user-menu');
+        
+        userMenuButton.addEventListener('click', () => {
+            userMenu.classList.toggle('hidden');
+        });
+        
+        // Close user menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.classList.add('hidden');
+            }
+        });
+
+        // Profile picture upload
+        document.getElementById('profile_picture').addEventListener('change', function() {
+            document.getElementById('profile-picture-form').submit();
+        });
+    </script>
+</body>
+</html>

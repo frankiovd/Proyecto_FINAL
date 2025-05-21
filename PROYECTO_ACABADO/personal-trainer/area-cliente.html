@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Cliente - TrainSmart</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">TrainSmart</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium transition duration-300">Inicio</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium transition duration-300">Sobre Nosotros</a>
+                    <a href="testimonios.html" class="text-secondary hover:text-primary font-medium transition duration-300">Testimonios</a>
+                    <a href="area-entrenador.html" class="text-secondary hover:text-primary font-medium transition duration-300">Área Entrenador</a>
+                    <a href="area-cliente.html" class="text-primary font-medium transition duration-300">Área Cliente</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-secondary hover:text-primary font-medium">Inicio</a>
+                <a href="about.html" class="block py-2 text-secondary hover:text-primary font-medium">Sobre Nosotros</a>
+                <a href="testimonios.html" class="block py-2 text-secondary hover:text-primary font-medium">Testimonios</a>
+                <a href="area-entrenador.html" class="block py-2 text-secondary hover:text-primary font-medium">Área Entrenador</a>
+                <a href="area-cliente.html" class="block py-2 text-primary font-medium">Área Cliente</a>
+                <div class="mt-4">
+                    <a href="login.php" class="block py-2 text-secondary hover:text-primary font-medium">Iniciar Sesión</a>
+                    <a href="register.php" class="block py-2 text-primary font-medium">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="py-20 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Área Cliente</h1>
+            <p class="text-white text-lg max-w-3xl mx-auto">Gestiona tus entrenamientos, sigue tu progreso y alcanza tus objetivos fitness con nuestra plataforma integral.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Para Clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Una experiencia personalizada para alcanzar tus objetivos de fitness.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-light p-6 rounded-lg shadow-md">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-mobile-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary text-center mb-4">Acceso Móvil</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>App móvil intuitiva</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Acceso a planes en cualquier lugar</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Notificaciones personalizadas</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-light p-6 rounded-lg shadow-md">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-tasks text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary text-center mb-4">Seguimiento Personal</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Registro de entrenamientos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Seguimiento de medidas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Fotos de progreso</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-light p-6 rounded-lg shadow-md">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-video text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary text-center mb-4">Recursos Multimedia</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Videos de ejercicios</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Guías técnicas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Consejos nutricionales</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Beneficios del Área Cliente</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Descubre todas las herramientas que tenemos para ayudarte a alcanzar tus metas.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-secondary mb-6">Gestión de Entrenamientos</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Planes personalizados según tus objetivos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Calendario de sesiones interactivo</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Registro de ejercicios y series</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Historial de entrenamientos</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-secondary mb-6">Seguimiento y Progreso</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Gráficos de evolución</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Métricas corporales</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Estadísticas de rendimiento</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Comparativas mensuales</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white font-heading mb-6">¿Listo para comenzar?</h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Únete a TrainSmart y comienza tu viaje hacia una vida más saludable con el apoyo de profesionales.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="register.php" class="px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-opacity-90 transition duration-300">Registrarse Ahora</a>
+                <a href="login.php" class="px-6 py-3 bg-white text-secondary font-medium rounded-md hover:bg-gray-100 transition duration-300">Iniciar Sesión</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">TrainSmart</h3>
+                    <p class="text-gray-400 mb-4">Plataforma de gestión de entrenamientos personalizados.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition duration-300">Inicio</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition duration-300">Sobre Nosotros</a></li>
+                        <li><a href="testimonios.html" class="text-gray-400 hover:text-primary transition duration-300">Testimonios</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Soporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Centro de Ayuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Documentación</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">soporte@trainsmart.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+34 900 123 456</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2023 TrainSmart - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

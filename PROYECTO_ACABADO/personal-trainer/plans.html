@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Entrenamiento - FitLife Entrenamiento Personal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">FitLife</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium transition duration-300">Inicio</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium transition duration-300">Nosotros</a>
+                    <a href="plans.html" class="text-primary font-medium transition duration-300">Planes</a>
+                    <a href="testimonials.html" class="text-secondary hover:text-primary font-medium transition duration-300">Testimonios</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium transition duration-300">Contacto</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-secondary hover:text-primary font-medium">Inicio</a>
+                <a href="about.html" class="block py-2 text-secondary hover:text-primary font-medium">Nosotros</a>
+                <a href="plans.html" class="block py-2 text-primary font-medium">Planes</a>
+                <a href="testimonials.html" class="block py-2 text-secondary hover:text-primary font-medium">Testimonios</a>
+                <a href="contact.html" class="block py-2 text-secondary hover:text-primary font-medium">Contacto</a>
+                <div class="flex space-x-4 mt-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-20 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Planes de Entrenamiento</h1>
+            <p class="text-white text-lg max-w-3xl mx-auto">Descubre nuestros planes personalizados diseñados para ayudarte a alcanzar tus objetivos específicos.</p>
+        </div>
+    </section>
+
+    <!-- Plans Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Entrenamiento Personalizado para Todos</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">En FitLife, entendemos que cada persona es única, con diferentes objetivos, niveles de condición física y preferencias. Por eso, ofrecemos una variedad de planes de entrenamiento que pueden adaptarse a tus necesidades específicas.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-bold text-secondary font-heading mb-4">¿Cómo Funcionan Nuestros Planes?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-3 flex-shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-secondary">Evaluación Inicial</h4>
+                                <p class="text-gray-600">Comenzamos con una evaluación completa para entender tu nivel actual, objetivos y cualquier limitación o consideración especial.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-3 flex-shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-secondary">Diseño del Plan</h4>
+                                <p class="text-gray-600">Creamos un plan personalizado basado en tu evaluación, adaptado a tus objetivos específicos y preferencias.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-3 flex-shrink-0">3</div>
+                            <div>
+                                <h4 class="font-bold text-secondary">Entrenamiento y Seguimiento</h4>
+                                <p class="text-gray-600">Trabajamos contigo en sesiones regulares, proporcionando orientación, corrección y motivación. Realizamos un seguimiento de tu progreso.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mt-1 mr-3 flex-shrink-0">4</div>
+                            <div>
+                                <h4 class="font-bold text-secondary">Ajustes y Evolución</h4>
+                                <p class="text-gray-600">Ajustamos tu plan según sea necesario basándonos en tu progreso y feedback, asegurando que sigas avanzando hacia tus objetivos.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg" alt="Entrenamiento Personalizado" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Pricing -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Nuestros Planes de Entrenamiento</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Elige el plan que mejor se adapte a tus necesidades y objetivos.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan Básico -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-primary py-4">
+                        <h3 class="text-xl font-bold text-white text-center">Plan Básico</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-center mb-6">
+                            <span class="text-4xl font-bold text-secondary">€49</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>2 sesiones semanales</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Evaluación inicial</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Plan de entrenamiento básico</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Seguimiento mensual</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times mr-2"></i>
+                                <span>Asesoramiento nutricional</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times mr-2"></i>
+                                <span>App de seguimiento</span>
+                            </li>
+                        </ul>
+                        <a href="register.php?plan=basic" class="block w-full py-3 bg-primary text-white text-center rounded-md hover:bg-opacity-90 transition duration-300">Seleccionar Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Plan Premium -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform scale-105 z-10 border-2 border-secondary">
+                    <div class="bg-secondary py-4 relative">
+                        <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 transform translate-x-2 -translate-y-1/2 rounded">POPULAR</div>
+                        <h3 class="text-xl font-bold text-white text-center">Plan Premium</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-center mb-6">
+                            <span class="text-4xl font-bold text-secondary">€89</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>3 sesiones semanales</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Evaluación completa</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Plan de entrenamiento avanzado</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Seguimiento quincenal</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Asesoramiento nutricional básico</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times mr-2"></i>
+                                <span>App de seguimiento</span>
+                            </li>
+                        </ul>
+                        <a href="register.php?plan=premium" class="block w-full py-3 bg-secondary text-white text-center rounded-md hover:bg-opacity-90 transition duration-300">Seleccionar Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Plan Elite -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-primary py-4">
+                        <h3 class="text-xl font-bold text-white text-center">Plan Elite</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-center mb-6">
+                            <span class="text-4xl font-bold text-secondary">€129</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>5 sesiones semanales</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Evaluación completa con análisis</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Plan de entrenamiento personalizado</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Seguimiento semanal</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Plan nutricional completo</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-primary mr-2"></i>
+                                <span>Acceso a app de seguimiento</span>
+                            </li>
+                        </ul>
+                        <a href="register.php?plan=elite" class="block w-full py-3 bg-primary text-white text-center rounded-md hover:bg-opacity-90 transition duration-300">Seleccionar Plan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">¿Necesitas un plan más específico? Contáctanos para crear un plan totalmente personalizado.</p>
+                <a href="contact.html" class="inline-block px-6 py-3 bg-secondary text-white font-medium rounded-md hover:bg-opacity-90 transition duration-300">Contactar para Plan Personalizado</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialized Programs -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Programas Especializados</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Además de nuestros planes principales, ofrecemos programas especializados para objetivos específicos.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Pérdida de Peso -->
+                <div class="bg-light rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-2/5">
+                            <img src="https://images.pexels.com/photos/3757954/pexels-photo-3757954.jpeg" alt="Pérdida de Peso" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-3/5 p-6">
+                            <h3 class="text-xl font-bold text-secondary mb-3">Programa de Pérdida de Peso</h3>
+                            <p class="text-gray-600 mb-4">Diseñado específicamente para ayudarte a perder peso de manera saludable y sostenible, combinando entrenamiento y nutrición.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Entrenamiento cardiovascular optimizado</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Plan nutricional para déficit calórico</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Seguimiento de composición corporal</span>
+                                </li>
+                            </ul>
+                            <a href="contact.html?program=weight-loss" class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ganancia Muscular -->
+                <div class="bg-light rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-2/5">
+                            <img src="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg" alt="Ganancia Muscular" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-3/5 p-6">
+                            <h3 class="text-xl font-bold text-secondary mb-3">Programa de Ganancia Muscular</h3>
+                            <p class="text-gray-600 mb-4">Enfocado en el desarrollo de masa muscular a través de entrenamiento de fuerza progresivo y nutrición optimizada.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Entrenamiento de hipertrofia</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Plan nutricional para superávit calórico</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Suplementación recomendada</span>
+                                </li>
+                            </ul>
+                            <a href="contact.html?program=muscle-gain" class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rendimiento Deportivo -->
+                <div class="bg-light rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-2/5">
+                            <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg" alt="Rendimiento Deportivo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-3/5 p-6">
+                            <h3 class="text-xl font-bold text-secondary mb-3">Programa de Rendimiento Deportivo</h3>
+                            <p class="text-gray-600 mb-4">Diseñado para atletas que buscan mejorar su rendimiento en un deporte específico, enfocándose en las habilidades y capacidades necesarias.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Entrenamiento específico por deporte</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Mejora de capacidades físicas clave</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Periodización del entrenamiento</span>
+                                </li>
+                            </ul>
+                            <a href="contact.html?program=sports-performance" class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rehabilitación -->
+                <div class="bg-light rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-2/5">
+                            <img src="https://images.pexels.com/photos/4498482/pexels-photo-4498482.jpeg" alt="Rehabilitación" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-3/5 p-6">
+                            <h3 class="text-xl font-bold text-secondary mb-3">Programa de Rehabilitación</h3>
+                            <p class="text-gray-600 mb-4">Para personas que se recuperan de lesiones o cirugías, con un enfoque en la recuperación segura y el fortalecimiento progresivo.</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Evaluación de la lesión</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Ejercicios correctivos</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-2"></i>
+                                    <span>Progresión gradual y segura</span>
+                                </li>
+                            </ul>
+                            <a href="contact.html?program=rehabilitation" class="inline-block px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Preguntas Frecuentes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Respuestas a las preguntas más comunes sobre nuestros planes de entrenamiento.</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6 bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold text-secondary flex justify-between items-center">
+                        <span>¿Cuánto tiempo necesito para ver resultados?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer p-4 pt-0 border-t border-gray-100 hidden">
+                        <p class="text-gray-600">Los resultados varían según cada persona, sus objetivos y su constancia. Generalmente, se pueden comenzar a notar cambios en 4-6 semanas con un entrenamiento regular y una alimentación adecuada. Para transformaciones más significativas, se recomienda un compromiso de al menos 3-6 meses.</p>
+                    </div>
+                </div>
+                <div class="mb-6 bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold text-secondary flex justify-between items-center">
+                        <span>¿Necesito experiencia previa en entrenamiento?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer p-4 pt-0 border-t border-gray-100 hidden">
+                        <p class="text-gray-600">No, nuestros planes están diseñados para personas de todos los niveles, desde principiantes hasta avanzados. Adaptamos cada programa según tu nivel de experiencia y condición física actual.</p>
+                    </div>
+                </div>
+                <div class="mb-6 bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold text-secondary flex justify-between items-center">
+                        <span>¿Puedo cambiar de plan si mis objetivos cambian?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer p-4 pt-0 border-t border-gray-100 hidden">
+                        <p class="text-gray-600">Sí, entendemos que los objetivos pueden evolucionar con el tiempo. Puedes cambiar de plan al finalizar tu ciclo mensual actual. Simplemente comunícate con tu entrenador o con nuestro equipo de atención al cliente para gestionar el cambio.</p>
+                    </div>
+                </div>
+                <div class="mb-6 bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold text-secondary flex justify-between items-center">
+                        <span>¿Qué sucede si no puedo asistir a una sesión?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer p-4 pt-0 border-t border-gray-100 hidden">
+                        <p class="text-gray-600">Pedimos que nos avises con al menos 24 horas de antelación si no puedes asistir a una sesión programada. Dependiendo de la disponibilidad, podemos reprogramar la sesión dentro de la misma semana. Consulta nuestra política de cancelación para más detalles.</p>
+                    </div>
+                </div>
+                <div class="mb-6 bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-4 font-bold text-secondary flex justify-between items-center">
+                        <span>¿Incluyen los planes asesoramiento nutricional?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer p-4 pt-0 border-t border-gray-100 hidden">
+                        <p class="text-gray-600">Los planes Premium y Elite incluyen asesoramiento nutricional en diferentes niveles. El Plan Básico no incluye este servicio, pero puede añadirse como complemento. Nuestro asesoramiento nutricional está diseñado para complementar tu entrenamiento y ayudarte a alcanzar tus objetivos más rápidamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white font-heading mb-6">¿Listo para comenzar tu transformación?</h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Elige el plan que mejor se adapte a tus objetivos y comienza tu viaje hacia una vida más saludable y en forma.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="register.php" class="px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-opacity-90 transition duration-300">Registrarse Ahora</a>
+                <a href="contact.html" class="px-6 py-3 bg-white text-secondary font-medium rounded-md hover:bg-gray-100 transition duration-300">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">FitLife</h3>
+                    <p class="text-gray-400 mb-4">Transformando vidas a través del entrenamiento personalizado y un estilo de vida saludable.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition duration-300">Inicio</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition duration-300">Nosotros</a></li>
+                        <li><a href="plans.html" class="text-gray-400 hover:text-primary transition duration-300">Planes</a></li>
+                        <li><a href="testimonials.html" class="text-gray-400 hover:text-primary transition duration-300">Testimonios</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Servicios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Entrenamiento Personal</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Asesoramiento Nutricional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Entrenamiento en Grupo</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Programas Online</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Evaluación Física</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">Calle Principal 123, Madrid, España</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+34 912 345 678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">info@fitlife.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary mr-3"></i>
+                            <span class="text-gray-400">Lun-Vie: 7:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2023 FitLife - Entrenamiento Personal. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Close other FAQs
+                faqQuestions.forEach(q => {
+                    if (q !== question) {
+                        const a = q.nextElementSibling;
+                        const i = q.querySelector('i');
+                        
+                        a.classList.add('hidden');
+                        i.classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

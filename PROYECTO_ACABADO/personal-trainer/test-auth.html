@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Firebase Authentication - FitLife</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md w-96">
+        <h1 class="text-2xl font-bold mb-6 text-center">Test Firebase Auth</h1>
+        
+        <div class="space-y-4">
+            <!-- Estado de autenticación -->
+            <div id="authStatus" class="p-4 bg-gray-100 rounded-md text-center">
+                No autenticado
+            </div>
+
+            <!-- Botones de autenticación -->
+            <button onclick="signInWithGoogle()" 
+                    class="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-md px-4 py-2 text-gray-700 hover:bg-gray-50">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google logo">
+                <span>Iniciar sesión con Google</span>
+            </button>
+
+            <button onclick="signInWithFacebook()"
+                    class="w-full flex items-center justify-center gap-2 bg-blue-600 rounded-md px-4 py-2 text-white hover:bg-blue-700">
+                <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" class="w-5 h-5" alt="Facebook logo">
+                <span>Iniciar sesión con Facebook</span>
+            </button>
+
+            <button onclick="signOut()" 
+                    class="w-full bg-red-500 text-white rounded-md px-4 py-2 hover:bg-red-600">
+                Cerrar sesión
+            </button>
+        </div>
+
+        <!-- Información del usuario -->
+        <div id="userInfo" class="mt-6 p-4 bg-gray-100 rounded-md hidden">
+            <h2 class="font-bold mb-2">Información del usuario:</h2>
+            <pre id="userDetails" class="whitespace-pre-wrap break-words text-sm"></pre>
+        </div>
+
+        <!-- Log de eventos -->
+        <div class="mt-6">
+            <h2 class="font-bold mb-2">Log de eventos:</h2>
+            <div id="eventLog" class="bg-gray-100 p-4 rounded-md h-40 overflow-y-auto text-sm">
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, onAuthStateChanged } 
+        from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAHzlbNvClWUyIKGnClE7Bdnf2JYAJVVoE",
+            authDomain: "fitlife-personal-trainer.firebaseapp.com",
+            projectId: "fitlife-personal-trainer",
+            storageBucket: "fitlife-personal-trainer.firebasestorage.app",
+            messagingSenderId: "1090699970152",
+            appId: "1:1090699970152:web:94812d7c39453de41e1ddd",
+            measurementId: "G-4VGLPVF9BE"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // Auth providers
+        const googleProvider = new GoogleAuthProvider();
+        const facebookProvider = new FacebookAuthProvider();
+
+        // Add scopes
+        googleProvider.addScope('profile');
+        googleProvider.addScope('email');
+        facebookProvider.addScope('email');
+        facebookProvider.addScope('public_profile');
+
+        // DOM Elements
+        const authStatus = document.getElementById('authStatus');
+        const userInfo = document.getElementById('userInfo');
+        const userDetails = document.getElementById('userDetails');
+        const eventLog = document.getElementById('eventLog');
+
+        // Log event function
+        function logEvent(message) {
+            const time = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.textContent = `${time}: ${message}`;
+            eventLog.prepend(logEntry);
+            console.log(`${time}: ${message}`);
+        }
+
+        // Auth state observer
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                authStatus.textContent = 'Autenticado';
+                authStatus.className = 'p-4 bg-green-100 text-green-700 rounded-md text-center';
+                userInfo.classList.remove('hidden');
+                userDetails.textContent = JSON.stringify({
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    uid: user.uid
+                }, null, 2);
+                logEvent(`Usuario autenticado: ${user.email}`);
+            } else {
+                authStatus.textContent = 'No autenticado';
+                authStatus.className = 'p-4 bg-gray-100 text-gray-700 rounded-md text-center';
+                userInfo.classList.add('hidden');
+                logEvent('Usuario no autenticado');
+            }
+        });
+
+        // Handle auth success
+        async function handleAuthSuccess(result, provider) {
+            const user = result.user;
+            const userData = {
+                email: user.email,
+                name: user.displayName,
+                uid: user.uid,
+                photoURL: user.photoURL,
+                provider: provider
+            };
+
+            try {
+                const response = await fetch(`auth/${provider}-callback.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData)
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    throw new Error(data.message || 'Error en el servidor');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                logEvent(`Error al procesar el inicio de sesión: ${error.message}`);
+            }
+        }
+
+        // Sign in with Google
+        window.signInWithGoogle = async () => {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                await handleAuthSuccess(result, 'google');
+            } catch (error) {
+                logEvent(`Error de autenticación con Google: ${error.message}`);
+                console.error('Error completo:', error);
+            }
+        };
+
+        // Sign in with Facebook
+        window.signInWithFacebook = async () => {
+            try {
+                const result = await signInWithPopup(auth, facebookProvider);
+                await handleAuthSuccess(result, 'facebook');
+            } catch (error) {
+                logEvent(`Error de autenticación con Facebook: ${error.message}`);
+                console.error('Error completo:', error);
+            }
+        };
+
+        // Sign out
+        window.signOut = async () => {
+            try {
+                await signOut(auth);
+                logEvent('Sesión cerrada exitosamente');
+            } catch (error) {
+                logEvent(`Error al cerrar sesión: ${error.message}`);
+            }
+        };
+
+        // Log initial state
+        logEvent('Página cargada');
+    </script>
+</body>
+</html>
