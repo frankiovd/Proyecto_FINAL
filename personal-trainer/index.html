@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrainSmart - Gestión de Entrenamientos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">TrainSmart</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-primary font-medium transition duration-300">Inicio</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium transition duration-300">Sobre Nosotros</a>
+                    <a href="testimonios.html" class="text-secondary hover:text-primary font-medium transition duration-300">Testimonios</a>
+                    <a href="area-entrenador.html" class="text-secondary hover:text-primary font-medium transition duration-300">Área Entrenador</a>
+                    <a href="area-cliente.html" class="text-secondary hover:text-primary font-medium transition duration-300">Área Cliente</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-primary font-medium">Inicio</a>
+                <a href="about.html" class="block py-2 text-secondary hover:text-primary font-medium">Sobre Nosotros</a>
+                <a href="testimonios.html" class="block py-2 text-secondary hover:text-primary font-medium">Testimonios</a>
+                <a href="area-entrenador.html" class="block py-2 text-secondary hover:text-primary font-medium">Área Entrenador</a>
+                <a href="area-cliente.html" class="block py-2 text-secondary hover:text-primary font-medium">Área Cliente</a>
+                <div class="mt-4">
+                    <a href="login.php" class="block py-2 text-secondary hover:text-primary font-medium">Iniciar Sesión</a>
+                    <a href="register.php" class="block py-2 text-primary font-medium">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-primary py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-white font-heading leading-tight mb-6">Gestiona tus <span class="text-white">entrenamientos</span> de forma eficiente</h1>
+                <p class="text-white text-lg mb-8">Conectamos entrenadores y clientes en una plataforma integral para la gestión de planes de entrenamiento personalizados.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="area-entrenador.html" class="px-6 py-3 bg-white text-primary font-medium rounded-md text-center hover:bg-gray-100 transition duration-300">Soy Entrenador</a>
+                    <a href="area-cliente.html" class="px-6 py-3 bg-white text-primary font-medium rounded-md text-center hover:bg-gray-100 transition duration-300">Soy Cliente</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.pexels.com/photos/4498482/pexels-photo-4498482.jpeg" alt="Gestión de Entrenamientos" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-primary font-heading mb-4">Características Principales</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Una plataforma completa para la gestión eficiente de entrenamientos personalizados.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-light p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Gestión de Clientes</h3>
+                    <p class="text-gray-600">Administra tus clientes, asigna planes y realiza seguimiento de su progreso desde un solo lugar.</p>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-dumbbell text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Planes Personalizados</h3>
+                    <p class="text-gray-600">Crea y personaliza planes de entrenamiento específicos para cada cliente según sus objetivos.</p>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md text-center">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Seguimiento de Progreso</h3>
+                    <p class="text-gray-600">Monitoriza el avance de tus clientes con métricas detalladas y estadísticas en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Trainers Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold text-primary font-heading mb-6">Para Entrenadores</h2>
+                    <p class="text-gray-600 mb-6">Optimiza tu trabajo como entrenador personal con herramientas diseñadas para ti.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Panel de control personalizado</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Gestión de múltiples clientes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Creación de planes de entrenamiento</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Seguimiento de progreso de clientes</span>
+                        </li>
+                    </ul>
+                    <a href="area-entrenador.html" class="inline-block mt-8 px-6 py-3 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Acceder como Entrenador</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.pexels.com/photos/3912516/pexels-photo-3912516.jpeg" alt="Área de Entrenador" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Clients Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pl-10">
+                    <h2 class="text-3xl font-bold text-primary font-heading mb-6">Para Clientes</h2>
+                    <p class="text-gray-600 mb-6">Accede a tus planes de entrenamiento y realiza seguimiento de tu progreso fácilmente.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Acceso a planes personalizados</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Registro de entrenamientos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Seguimiento de progreso</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            <span>Comunicación con tu entrenador</span>
+                        </li>
+                    </ul>
+                    <a href="area-cliente.html" class="inline-block mt-8 px-6 py-3 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Acceder como Cliente</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.pexels.com/photos/4498464/pexels-photo-4498464.jpeg" alt="Área de Cliente" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white font-heading mb-6">Comienza a gestionar tus entrenamientos hoy</h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Únete a nuestra plataforma y mejora la gestión de tus entrenamientos.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="register.php" class="px-6 py-3 bg-white text-primary font-medium rounded-md hover:bg-opacity-90 transition duration-300">Registrarse Ahora</a>
+                <a href="login.php" class="px-6 py-3 border-2 border-white text-white font-medium rounded-md hover:bg-white hover:text-primary transition duration-300">Iniciar Sesión</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">TrainSmart</h3>
+                    <p class="text-gray-400 mb-4">Plataforma de gestión de entrenamientos personalizados.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="area-entrenador.html" class="text-gray-400 hover:text-primary transition duration-300">Área Entrenador</a></li>
+                        <li><a href="area-cliente.html" class="text-gray-400 hover:text-primary transition duration-300">Área Cliente</a></li>
+                        <li><a href="login.php" class="text-gray-400 hover:text-primary transition duration-300">Iniciar Sesión</a></li>
+                        <li><a href="register.php" class="text-gray-400 hover:text-primary transition duration-300">Registrarse</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Soporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Centro de Ayuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Documentación</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">soporte@trainsmart.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+34 900 123 456</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2023 TrainSmart - Plataforma de Gestión de Entrenamientos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

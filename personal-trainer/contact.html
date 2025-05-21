@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - FitLife Entrenamiento Personal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">FitLife</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium transition duration-300">Inicio</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium transition duration-300">Nosotros</a>
+                    <a href="plans.html" class="text-secondary hover:text-primary font-medium transition duration-300">Planes</a>
+                    <a href="testimonials.html" class="text-secondary hover:text-primary font-medium transition duration-300">Testimonios</a>
+                    <a href="contact.html" class="text-primary font-medium transition duration-300">Contacto</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-secondary hover:text-primary font-medium">Inicio</a>
+                <a href="about.html" class="block py-2 text-secondary hover:text-primary font-medium">Nosotros</a>
+                <a href="plans.html" class="block py-2 text-secondary hover:text-primary font-medium">Planes</a>
+                <a href="testimonials.html" class="block py-2 text-secondary hover:text-primary font-medium">Testimonios</a>
+                <a href="contact.html" class="block py-2 text-primary font-medium">Contacto</a>
+                <div class="flex space-x-4 mt-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-20 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Contacto</h1>
+            <p class="text-white text-lg max-w-3xl mx-auto">¿Tienes alguna pregunta o quieres más información? Estamos aquí para ayudarte. Ponte en contacto con nosotros.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-light p-8 rounded-lg shadow-md text-center transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Dirección</h3>
+                    <p class="text-gray-600">Calle Principal 123<br>28001 Madrid, España</p>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md text-center transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Teléfono</h3>
+                    <p class="text-gray-600">+34 912 345 678<br>+34 912 345 679</p>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md text-center transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-4">Email</h3>
+                    <p class="text-gray-600">info@fitlife.com<br>soporte@fitlife.com</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-secondary font-heading mb-6">Envíanos un Mensaje</h2>
+                    <p class="text-gray-600 mb-8">Completa el formulario y nos pondremos en contacto contigo lo antes posible. También puedes llamarnos o visitarnos en nuestras instalaciones.</p>
+                    
+                    <form action="php/contact.php" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Asunto</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="info">Información general</option>
+                                <option value="plans">Información sobre planes</option>
+                                <option value="trial">Solicitar sesión de prueba</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="privacy" name="privacy" class="mr-2 focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded" required>
+                            <label for="privacy" class="text-gray-700">Acepto la <a href="#" class="text-primary hover:underline">política de privacidad</a></label>
+                        </div>
+                        <div>
+                            <button type="submit" class="px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-opacity-90 transition duration-300 w-full md:w-auto">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <div class="bg-light p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-secondary mb-4">Horario de Atención</h3>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between items-center">
+                                <span class="text-gray-600">Lunes - Viernes</span>
+                                <span class="font-medium">7:00 - 21:00</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <span class="text-gray-600">Sábado</span>
+                                <span class="font-medium">9:00 - 18:00</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <span class="text-gray-600">Domingo</span>
+                                <span class="font-medium">Cerrado</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-secondary mb-4">Síguenos en Redes Sociales</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-[#3b5998] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-[#1da1f2] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-[#c32aa3] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-[#ff0000] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="bg-[#0a66c2] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-light p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-secondary mb-4">Preguntas Frecuentes</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="#" class="text-primary hover:underline flex items-center">
+                                    <i class="fas fa-question-circle mr-2"></i>
+                                    <span>¿Cómo puedo programar una sesión de prueba?</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-primary hover:underline flex items-center">
+                                    <i class="fas fa-question-circle mr-2"></i>
+                                    <span>¿Cuál es la política de cancelación?</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-primary hover:underline flex items-center">
+                                    <i class="fas fa-question-circle mr-2"></i>
+                                    <span>¿Ofrecen planes corporativos?</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary font-heading mb-4">Nuestra Ubicación</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Estamos ubicados en una zona céntrica de Madrid, con fácil acceso en transporte público y amplio estacionamiento.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="aspect-w-16 aspect-h-9 relative">
+                    <div class="w-full h-0 pb-[56.25%] bg-gray-200 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt text-6xl text-primary mb-2"></i>
+                                <p class="text-gray-600">Mapa de ubicación</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-secondary mb-4">Cómo Llegar</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-bold text-secondary mb-2 flex items-center">
+                                <i class="fas fa-subway text-primary mr-2"></i>
+                                Metro
+                            </h4>
+                            <p class="text-gray-600">Línea 1 - Estación Sol<br>Línea 2 - Estación Sevilla</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-secondary mb-2 flex items-center">
+                                <i class="fas fa-bus text-primary mr-2"></i>
+                                Autobús
+                            </h4>
+                            <p class="text-gray-600">Líneas 1, 2, 5, 15, 20<br>Parada: Gran Vía</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-secondary mb-2 flex items-center">
+                                <i class="fas fa-car text-primary mr-2"></i>
+                                Parking
+                            </h4>
+                            <p class="text-gray-600">Parking público a 100m<br>Tarifa especial para clientes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white font-heading mb-6">Suscríbete a Nuestro Newsletter</h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto">Recibe consejos de entrenamiento, nutrición y bienestar, además de ofertas exclusivas y novedades.</p>
+            <form action="php/newsletter.php" method="POST" class="max-w-md mx-auto flex flex-col sm:flex-row">
+                <input type="email" placeholder="Tu email" class="px-4 py-3 rounded-md sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent flex-grow" required>
+                <button type="submit" class="mt-3 sm:mt-0 px-6 py-3 bg-primary text-white font-medium rounded-md sm:rounded-l-none hover:bg-opacity-90 transition duration-300">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">FitLife</h3>
+                    <p class="text-gray-400 mb-4">Transformando vidas a través del entrenamiento personalizado y un estilo de vida saludable.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition duration-300">Inicio</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition duration-300">Nosotros</a></li>
+                        <li><a href="plans.html" class="text-gray-400 hover:text-primary transition duration-300">Planes</a></li>
+                        <li><a href="testimonials.html" class="text-gray-400 hover:text-primary transition duration-300">Testimonios</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Servicios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Entrenamiento Personal</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Asesoramiento Nutricional</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Entrenamiento en Grupo</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Programas Online</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Evaluación Física</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">Calle Principal 123, Madrid, España</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+34 912 345 678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">info@fitlife.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-primary mr-3"></i>
+                            <span class="text-gray-400">Lun-Vie: 7:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2023 FitLife - Entrenamiento Personal. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

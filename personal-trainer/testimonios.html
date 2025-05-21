@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios - TrainSmart</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        secondary: '#2E4057',
+                        light: '#F7F7F7',
+                        dark: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-light">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-primary font-heading">TrainSmart</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium transition duration-300">Inicio</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium transition duration-300">Sobre Nosotros</a>
+                    <a href="testimonios.html" class="text-primary font-medium transition duration-300">Testimonios</a>
+                    <a href="area-entrenador.html" class="text-secondary hover:text-primary font-medium transition duration-300">Área Entrenador</a>
+                    <a href="area-cliente.html" class="text-secondary hover:text-primary font-medium transition duration-300">Área Cliente</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="login.php" class="px-4 py-2 text-secondary font-medium hover:text-primary transition duration-300">Iniciar Sesión</a>
+                    <a href="register.php" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition duration-300">Registrarse</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-secondary hover:text-primary font-medium">Inicio</a>
+                <a href="about.html" class="block py-2 text-secondary hover:text-primary font-medium">Sobre Nosotros</a>
+                <a href="testimonios.html" class="block py-2 text-primary font-medium">Testimonios</a>
+                <a href="area-entrenador.html" class="block py-2 text-secondary hover:text-primary font-medium">Área Entrenador</a>
+                <a href="area-cliente.html" class="block py-2 text-secondary hover:text-primary font-medium">Área Cliente</a>
+                <div class="mt-4">
+                    <a href="login.php" class="block py-2 text-secondary hover:text-primary font-medium">Iniciar Sesión</a>
+                    <a href="register.php" class="block py-2 text-primary font-medium">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">Testimonios</h1>
+            <p class="text-white text-lg max-w-3xl mx-auto">Lo que nuestros usuarios dicen sobre TrainSmart</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-light p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente 1" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary">María López</h3>
+                            <p class="text-gray-600 text-sm">Cliente</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"TrainSmart ha transformado la manera en que gestiono mis entrenamientos. La comunicación con mi entrenador es mucho más fácil y el seguimiento es excelente."</p>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Entrenador 1" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary">Carlos Martínez</h3>
+                            <p class="text-gray-600 text-sm">Entrenador</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"La plataforma me permite gestionar múltiples clientes y crear planes personalizados de forma rápida y sencilla. Muy recomendable."</p>
+                </div>
+                <div class="bg-light p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente 2" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary">Ana Gómez</h3>
+                            <p class="text-gray-600 text-sm">Cliente</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Me encanta la facilidad para acceder a mis planes y el seguimiento detallado que puedo hacer de mi progreso. ¡Una herramienta imprescindible!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">TrainSmart</h3>
+                    <p class="text-gray-400 mb-4">Plataforma de gestión de entrenamientos personalizados.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="trainer/dashboard.php" class="text-gray-400 hover:text-primary transition duration-300">Área Entrenador</a></li>
+                        <li><a href="dashboard.php" class="text-gray-400 hover:text-primary transition duration-300">Área Cliente</a></li>
+                        <li><a href="login.php" class="text-gray-400 hover:text-primary transition duration-300">Iniciar Sesión</a></li>
+                        <li><a href="register.php" class="text-gray-400 hover:text-primary transition duration-300">Registrarse</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Soporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Centro de Ayuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Documentación</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition duration-300">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-heading">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">soporte@trainsmart.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+34 900 123 456</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2023 TrainSmart - Plataforma de Gestión de Entrenamientos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
